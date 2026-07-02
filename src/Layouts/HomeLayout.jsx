@@ -7,14 +7,18 @@ const HomeLayout = () => {
         <div className="font-poppins">
             <header>
                 <Home></Home>
-                <section className="w-9/12 mx-auto">
+                <section className="w-11/12 mx-auto">
                     <LatestNews/>
                 </section>
             </header>
-            <nav className="w-9/12 mx-auto mt-4">
+            <nav className="w-11/12 mx-auto mt-4">
                 <Navber/>
             </nav>
-            <main></main>
+            <main className="w-11/12 mx-auto grid grid-cols-12 gap-3 mt-8">
+                <aside className="col-span-3">Left part</aside>
+                <section className="col-span-6">Main Content</section>
+                <aside className="col-span-3">Right part</aside>
+            </main>
         </div>
     );
 };
