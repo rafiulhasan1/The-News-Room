@@ -1,4 +1,5 @@
 import FindOut from "../FindOut";
+import QZone from "../QZone";
 import SocialLogin from "../SocialLogin";
 
 const RightNavBer = () => {
@@ -6,6 +7,7 @@ const RightNavBer = () => {
         <div>
             <SocialLogin></SocialLogin>
             <FindOut></FindOut>
+            <QZone></QZone>
         </div>
     );
 };
