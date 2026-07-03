@@ -1,4 +1,4 @@
-# React + Vite
+<img src="./src/assets/logo.png width="100%" alt="logo">
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
