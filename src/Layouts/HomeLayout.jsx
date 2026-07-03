@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Home from "../Components/Home";
 import LatestNews from "../Components/LatestNews";
 import LeftNevBer from "../Components/LayoutComponents/LeftNevBer";
@@ -18,7 +19,9 @@ const HomeLayout = () => {
             </nav>
             <main className="w-11/12 mx-auto grid grid-cols-12 gap-3 mt-8">
                 <aside className="col-span-3"><LeftNevBer></LeftNevBer></aside>
-                <section className="col-span-6">Main Content</section>
+                <section className="col-span-6">
+                    <Outlet/>
+                </section>
                 <aside className="col-span-3"><RightNavBer></RightNavBer></aside>
             </main>
         </div>
