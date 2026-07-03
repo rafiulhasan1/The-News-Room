@@ -1,8 +1,11 @@
+import FindOut from "../FindOut";
+import SocialLogin from "../SocialLogin";
 
 const RightNavBer = () => {
     return (
         <div>
-            <h2>aside right track</h2>
+            <SocialLogin></SocialLogin>
+            <FindOut></FindOut>
         </div>
     );
 };
