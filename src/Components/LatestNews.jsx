@@ -5,7 +5,6 @@ const Marquee = MarqueeModule.default.default ?? MarqueeModule.default;
 
 const LatestNews = () => {
 
-    console.log("Marquee =", Marquee);
     return (
         <div className="flex items-center gap-2 bg-gray-100 p-3">
             <p className="bg-[#D72050] text-white py-1 px-2">Latest</p>
