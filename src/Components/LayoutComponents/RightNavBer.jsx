@@ -1,5 +1,6 @@
 import FindOut from "../FindOut";
 import QZone from "../QZone";
+import RightSideBanner from "../RightSideBanner";
 import SocialLogin from "../SocialLogin";
 
 const RightNavBer = () => {
@@ -8,6 +9,7 @@ const RightNavBer = () => {
             <SocialLogin></SocialLogin>
             <FindOut></FindOut>
             <QZone></QZone>
+            <RightSideBanner></RightSideBanner>
         </div>
     );
 };

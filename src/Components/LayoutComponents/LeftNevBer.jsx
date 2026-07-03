@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const LeftNevBer = () => {
 
@@ -15,7 +16,9 @@ const LeftNevBer = () => {
             <h2 className="font-semibold">All Caterogy</h2>
             <div className="flex flex-col gap-2 mt-3">
                 {
-                    cetagories.map(cetagory => <button className="btn font-semibold" key={cetagory.category_id}>{cetagory.category_name}</button>)
+                    cetagories.map(cetagory => <NavLink to={`/cetagory/${cetagory.category_id}`} className="btn font-semibold" key={cetagory.category_id}>
+                        {cetagory.category_name}
+                    </NavLink>)
                 }
             </div>
         </div>
