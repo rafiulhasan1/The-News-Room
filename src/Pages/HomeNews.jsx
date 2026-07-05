@@ -4,7 +4,7 @@ import SingleNews from "../Components/SingleNews";
 const HomeNews = () => {
 
     const { data: news } = useLoaderData();
-    console.log(news)
+    //console.log(news)
     return (
         <div>
             <h1 className="font-semibold mb-3">Dragon News Home</h1>

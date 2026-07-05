@@ -31,7 +31,8 @@ const Navber = () => {
                     <div>
                         <img src={navLogo} alt="" />
                     </div>
-                    <a className="btn btn-neutral px-8">Login</a>
+                    {/* <a className="btn btn-neutral px-8">Login</a> */}
+                    <Link to="auth/login" className="btn btn-neutral">Login</Link>
                 </div>
             </div>
         </div>
