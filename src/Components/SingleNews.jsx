@@ -5,6 +5,7 @@ import {
   FaStar,
   FaEye,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SingleNews = ({ news }) => {
   const {
@@ -14,7 +15,9 @@ const SingleNews = ({ news }) => {
     details,
     rating,
     total_view,
+    _id,
   } = news;
+  console.log(news)
 
   return (
     <div className="card bg-white border border-gray-200 shadow-sm mb-6">
@@ -57,10 +60,10 @@ const SingleNews = ({ news }) => {
           {details.length > 180 ? (
             <>
               {details.slice(0, 180)}...
-              <span className="text-orange-500 font-semibold cursor-pointer">
+              <Link to={`/news/${_id}`} className="text-orange-500 font-semibold cursor-pointer">
                 {" "}
                 Read More
-              </span>
+              </Link>
             </>
           ) : (
             details
