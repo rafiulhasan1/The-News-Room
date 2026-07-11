@@ -1,65 +1,234 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import {
+    FaUser,
+    FaEnvelope,
+    FaLock,
+    FaImage
+} from "react-icons/fa";
 
 const Register = () => {
 
-    const {createNewUser , setUser} = useContext(AuthContext);
+    const { createNewUser, setUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
+
         e.preventDefault();
-        const form = new FormData(e.target)
-        const name = form.get("name")
-        const photo = form.get("photo")
-        const email = form.get("email")
-        const password = form.get("password")
-        //console.log({name , photo , email , password})
 
-        createNewUser(email,password)
-            .then((result) =>{
-                const user = result.user;
-                setUser(user);
-                //console.log(user)
+        const form = e.target;
+
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createNewUser(email, password)
+            .then((result) => {
+
+                setUser(result.user);
+                navigate(location?.state || "/")
+
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            })
 
-    } 
+                alert(error.code);
+
+            });
+
+    };
 
     return (
-        <div className="min-h-screen flex justify-center items-center">
-            <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-8">
-                <div className="card-body">
-                    <form onSubmit={handleSubmit} className="fieldset">
-                        <h1 className="text-2xl font-semibold  text-center pb-6 border-b">Register your account</h1>
 
-                        <label className="label mt-3 font-semibold">Your Name</label>
-                        <input name="name" type="text" className="input w-full" placeholder="Enter Your Name" />
+        <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-red-50 flex justify-center items-center px-4 py-10">
 
-                        <label className="label mt-3 font-semibold">Photo URL</label>
-                        <input name="photo" type="text" className="input w-full" placeholder="Enter Your Photo URL" />
+            <div className="w-full max-w-xl">
 
-                        <label className="label mt-3 font-semibold">Email</label>
-                        <input name="email" type="email" className="input w-full" placeholder="Enter Your Email Address" />
+                <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 p-8">
 
-                        <label className="label font-semibold">Password</label>
-                        <input name="password" type="password" className="input w-full" placeholder="Enter Your Password" />
+                    <div className="text-center mb-8">
 
-                        <label className="label py-4 border-b">
-                            <input type="checkbox" className="checkbox" />
-                            Accept Term & Conditions
+                        <h1 className="text-4xl font-bold text-gray-800">
+                            Create Account
+                        </h1>
+
+                        <p className="text-gray-500 mt-2">
+                            Join The News Room today.
+                        </p>
+
+                    </div>
+
+                    <form
+                        onSubmit={handleSubmit}
+                        className="space-y-5"
+                    >
+
+                        {/* Name */}
+
+                        <div>
+
+                            <label className="font-semibold text-gray-700">
+
+                                Full Name
+
+                            </label>
+
+                            <div className="relative mt-2">
+
+                                <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-[#D72050] transition duration-300"
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Photo */}
+
+                        <div>
+
+                            <label className="font-semibold text-gray-700">
+
+                                Photo URL
+
+                            </label>
+
+                            <div className="relative mt-2">
+
+                                <FaImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                                <input
+                                    type="text"
+                                    name="photo"
+                                    placeholder="Paste your photo URL"
+                                    className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-[#D72050] transition duration-300"
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Email */}
+
+                        <div>
+
+                            <label className="font-semibold text-gray-700">
+
+                                Email
+
+                            </label>
+
+                            <div className="relative mt-2">
+
+                                <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-[#D72050] transition duration-300"
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Password */}
+
+                        <div>
+
+                            <label className="font-semibold text-gray-700">
+
+                                Password
+
+                            </label>
+
+                            <div className="relative mt-2">
+
+                                <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="Create a password"
+                                    className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-[#D72050] transition duration-300"
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Checkbox */}
+
+                        <label className="flex items-center gap-3 mt-2">
+
+                            <input
+                                type="checkbox"
+                                className="checkbox checkbox-error"
+                            />
+
+                            <span className="text-sm text-gray-600">
+
+                                I accept the Terms & Conditions
+
+                            </span>
+
                         </label>
 
-                        <div className="text-xs font-semibold pt-2">
-                           Already Have an account ? <Link className="text-red-600" to="/auth/login">Login</Link>
-                        </div>
-                        <button className="btn btn-neutral mt-4">Register</button>
+                        {/* Button */}
+
+                        <button
+                            className="
+                            w-full
+                            py-3
+                            rounded-xl
+                            bg-[#D72050]
+                            hover:bg-[#b51a44]
+                            text-white
+                            font-semibold
+                            hover:shadow-xl
+                            hover:-translate-y-1
+                            transition-all
+                            duration-300
+                            "
+                        >
+                            Create Account
+                        </button>
+
                     </form>
+
+                    <div className="text-center mt-7">
+
+                        <p className="text-gray-600">
+
+                            Already have an account?
+
+                            <Link
+                                to="/auth/login"
+                                className="text-[#D72050] font-semibold ml-2 hover:underline"
+                            >
+
+                                Login
+
+                            </Link>
+
+                        </p>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
+
     );
 };
 
