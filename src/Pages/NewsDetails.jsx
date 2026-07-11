@@ -27,10 +27,10 @@ const NewsDetails = () => {
                 <section className="col-span-9">
 
                     <h2 className="text-xl font-semibold mb-5">
-                        Dragon News
+                        News Room
                     </h2>
 
-                    <div className="border-0 bg-amber-50 rounded-lg p-6">
+                    <div className="border-0  shadow-xl rounded-lg p-6">
 
                         <img
                             src={image_url}
